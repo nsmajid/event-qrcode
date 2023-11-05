@@ -19,12 +19,12 @@ class ParticipantController extends Controller
 
         $filters = [
             'event_id' => request()->event,
-            'key'=> request()->key
+            'key' => request()->key
         ];
 
         return view('participant.index', [
             'participants' => Participant::filter($filters)->paginate(8)->withQueryString(),
-            'events'=>Event::get()
+            'events' => Event::get()
         ]);
     }
 
@@ -79,7 +79,9 @@ class ParticipantController extends Controller
      */
     public function show(Participant $participant)
     {
-        //
+        return view("participant.show", [
+            'participant' => $participant
+        ]);
     }
 
     /**
@@ -142,4 +144,3 @@ class ParticipantController extends Controller
         return $code;
     }
 }
-

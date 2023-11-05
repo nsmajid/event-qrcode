@@ -1,8 +1,10 @@
 <?php
 
+use App\Models\Event;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\ParticipantController;
-use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,8 +18,22 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('home.index');
+    return view('home.index',[
+        'events'=>Event::get()
+    ]);
 });
 
-Route::resource('event', EventController::class)->except(['show']);
-Route::resource('participant', ParticipantController::class)->except(['show','edit','update']);
+Route::get('/dashboard', function () {
+    return view('dashboard.index');
+})->name('dashboard')->middleware('auth');
+
+Route::get('/login', function () {
+    return view('user.login');
+})->name('login')->middleware('guest');
+
+Route::post('login',[UserController::class,'authLogin'])->middleware('guest');
+Route::get('logout',[UserController::class, 'authLogout'])->middleware('auth');
+
+Route::resource('event', EventController::class)->except(['show'])->middleware('auth');
+Route::resource('participant', ParticipantController::class)->except(['edit','update'])->middleware('auth');
+
