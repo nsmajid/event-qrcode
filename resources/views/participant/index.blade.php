@@ -34,8 +34,7 @@
                                 <th scope="col">Event</th>
                             @endif
                             <th scope="col">Name</th>
-                            <th scope="col">Email</th>
-                            <th scope="col">Phone</th>
+                            <th scope="col">Contact</th>
                             <th scope="col" class="w-25">Address</th>
                             <th scope="col">Arrived</th>
                             <th scope="col"></th>
@@ -50,15 +49,20 @@
                                 @endif
 
                                 <td>{{ $item->name }}</td>
-                                <td>{{ $item->email }}</td>
-                                <td>{{ $item->phone }}</td>
+                                <td>{{ $item->email }}
+                                    <br>
+                                    {{ $item->phone }}
+                                </td>
                                 <td>{{ $item->address }}</td>
                                 <td>{{ $item->have_arrived ? 'Yes' : 'Not yet' }}</td>
                                 <td>
+                                    <a href="/participant/{{ $item->id }}" class="btn btn-info btn-sm">QR</a>
+
                                     <form action="/participant/{{ $item->id }}" method="POST" class="d-inline">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-dark btn-sm"  onclick="return confirm('Are you sure you want delete?');">Delete</button>
+                                        <button type="submit" class="btn btn-dark btn-sm"
+                                            onclick="return confirm('Are you sure you want delete?');">Delete</button>
                                     </form>
                                 </td>
                             </tr>

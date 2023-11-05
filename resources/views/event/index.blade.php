@@ -26,7 +26,7 @@
                                 <td>{{ \Carbon\Carbon::parse($item->event_date)->format('d/m/Y') }}</td>
                                 <td>
                                     <a href="/participant?event={{ $item->id }}" class="btn btn-info btn-sm">Participant</a>
-                                    <a href="/participant/{{ $item->id }}/edit" class="btn btn-warning btn-sm">Edit</a>
+                                    <a href="/event/{{ $item->id }}/edit" class="btn btn-warning btn-sm">Edit</a>
                                     <form action="/event/{{ $item->id }}" method="POST" class="d-inline">
                                         @csrf
                                         @method('DELETE')

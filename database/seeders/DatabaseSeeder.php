@@ -4,10 +4,12 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+use App\Models\User;
 use App\Models\Event;
 use App\Models\Participant;
 use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 
 class DatabaseSeeder extends Seeder
@@ -19,6 +21,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        User::insert([
+            [
+                "name" => "Administrator",
+                "username" => "admin",
+                "password" =>  Hash::make('root'),
+            ]
+        ]);
         Event::insert([
             [
                 'event_name' => 'Workshop Laravel X Qrcode',
@@ -61,7 +70,7 @@ class DatabaseSeeder extends Seeder
 
         for ($i = 0; $i < $iteration; $i++) {
             $participants[] = [
-                'event_id' => rand(1,5),
+                'event_id' => rand(1, 5),
                 'name' => fake()->name(),
                 'phone' => '6281' . fake()->randomNumber(5, true),
                 'email' => fake()->unique()->safeEmail(),
