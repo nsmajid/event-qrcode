@@ -7,9 +7,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
-    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="author" content="nsmajid, FIST Effect">
     <meta name="generator" content="Hugo 0.118.2">
-    <title>Album example · Bootstrap v5.3</title>
+    <title>Landing Page FIST Events</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/album/">
 
