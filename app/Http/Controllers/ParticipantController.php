@@ -123,7 +123,7 @@ class ParticipantController extends Controller
         return redirect("/participant?event=$participant->event_id")->with($msg);
     }
 
-    private  function generateUniqueCode($length = 20)
+    private  function generateUniqueCode($length = 10)
     {
         $characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
         $charactersNumber = strlen($characters);
